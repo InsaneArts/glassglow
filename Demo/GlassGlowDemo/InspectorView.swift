@@ -31,9 +31,10 @@ struct InspectorView: View {
                 slider("Dispersion", $model.dispersion, 0...4)
                 Button("Reset") { model.reset() }
             }
+            .disabled(model.scene == .film)
             Section("Time") {
                 Toggle("Animate", isOn: $model.isPlaying)
-                slider("Seconds", $model.time, 0...6)
+                slider("Seconds", $model.time, 0...(model.scene == .film ? Film.duration : 6))
                     .help("The frozen time while paused, and the time of every export")
             }
             Section("Stage") {
@@ -44,18 +45,24 @@ struct InspectorView: View {
                     ForEach(PostFrame.allCases) { Text($0.rawValue).tag($0) }
                 }
             }
-            Section("Code") {
-                Text(CodeSnippet.swift(for: model))
-                    .font(.system(size: 11, design: .monospaced))
-                    .textSelection(.enabled)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                Button("Copy Code") {
-                    NSPasteboard.general.clearContents()
-                    NSPasteboard.general.setString(CodeSnippet.swift(for: model), forType: .string)
-                }
+            if model.scene != .film {
+                codeSection
             }
         }
         .formStyle(.grouped)
+    }
+
+    private var codeSection: some View {
+        Section("Code") {
+            Text(CodeSnippet.swift(for: model))
+                .font(.system(size: 11, design: .monospaced))
+                .textSelection(.enabled)
+                .frame(maxWidth: .infinity, alignment: .leading)
+            Button("Copy Code") {
+                NSPasteboard.general.clearContents()
+                NSPasteboard.general.setString(CodeSnippet.swift(for: model), forType: .string)
+            }
+        }
     }
 
     @ViewBuilder

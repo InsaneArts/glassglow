@@ -4,6 +4,8 @@ import SwiftUI
 struct ContentView: View {
     @State private var model = DemoModel()
     @State private var showInspector = true
+    /// The video export's progress, while one runs.
+    @State private var exporting: Double?
 
     var body: some View {
         NavigationSplitView {
@@ -34,6 +36,18 @@ struct ContentView: View {
                 }
                 .keyboardShortcut("e")
                 .help("Export the stage as a PNG at the selected frame's size")
+                if let exporting {
+                    ProgressView(value: exporting)
+                        .frame(width: 80)
+                } else {
+                    Button {
+                        FilmExport.save(model: model) { exporting = $0 }
+                    } label: {
+                        Label("Export Video", systemImage: "film")
+                    }
+                    .keyboardShortcut("e", modifiers: [.command, .shift])
+                    .help("Export a video at the selected frame's size: the film on the Film scene, one 6 s loop of the light on the others")
+                }
                 Button {
                     showInspector.toggle()
                 } label: {

@@ -8,6 +8,9 @@ enum Exporter {
     /// The stage at the frame's pixel size (2 pixels per point), frozen at the model's time.
     @MainActor
     static func image(model: DemoModel, pixels: CGSize) -> CGImage? {
+        if model.scene == .film {
+            return FilmRenderer(width: Int(pixels.width), height: Int(pixels.height)).cgImage(at: model.time)
+        }
         let points = CGSize(width: pixels.width / 2, height: pixels.height / 2)
         let stage = Stage(model: model, time: .some(model.time))
             .frame(width: points.width, height: points.height)
@@ -49,6 +52,7 @@ enum AssetRenderer {
     @MainActor
     static func runIfRequested() {
         let args = CommandLine.arguments
+        FilmExport.runIfRequested(args)
         guard let i = args.firstIndex(of: "--render-assets"), i + 1 < args.count else { return }
         let dir = URL(fileURLWithPath: args[i + 1])
         try? FileManager.default.createDirectory(at: dir, withIntermediateDirectories: true)

@@ -9,6 +9,7 @@ enum DemoScene: String, CaseIterable, Identifiable {
     case clock = "Clock"
     case trio = "Trio"
     case collection = "Collection"
+    case film = "Film"
 
     var id: String { rawValue }
 
@@ -20,11 +21,12 @@ enum DemoScene: String, CaseIterable, Identifiable {
         case .clock: "clock"
         case .trio: "sparkles"
         case .collection: "square.grid.3x2"
+        case .film: "film"
         }
     }
 
     /// Scenes that show several presets at once ignore the chosen palette.
-    var usesPalette: Bool { self != .trio && self != .collection }
+    var usesPalette: Bool { self != .trio && self != .collection && self != .film }
 }
 
 /// SF Symbols that make good glass.
@@ -104,6 +106,8 @@ struct Stage: View {
                     }
                 }
             }
+        case .film:
+            FilmPlayer(time: time.map { $0 ?? model.time } ?? model.liveTime)
         }
     }
 

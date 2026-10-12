@@ -8,21 +8,29 @@
 
 /* Begin PBXBuildFile section */
 		025DDDDAF1A01A25BB561F7B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B191E3A5448A77458527850 /* ContentView.swift */; };
+		0A14F12B91317ECDB0BE26F8 /* VideoWriter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 751DBB340B14EC59D8C01856 /* VideoWriter.swift */; };
+		34F0715292618E2674F7B6D0 /* Film.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5A3F5F74CD746FB255877E19 /* Film.swift */; };
 		43E20AD79C69A85D1C4181F4 /* Exporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E72257C6EBAE30C8F089EB8 /* Exporter.swift */; };
 		4B2D098372F576559D0F2BBE /* DemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BE48B24D2717B5B02E012 /* DemoModel.swift */; };
+		828F090E852014F2398F986E /* ShapeField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D6E6029653F488B412F27A8 /* ShapeField.swift */; };
 		8CFF27DD53E1B663DADF1B22 /* Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF86486203B3F8C6E66E10AC /* Scenes.swift */; };
 		A0B3256245CA75FA1B757E7D /* GlassGlow in Frameworks */ = {isa = PBXBuildFile; productRef = 7331421EE482FAE76D23C4AC /* GlassGlow */; };
 		AA287DC010373B09116F0738 /* InspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A3B82BC4952047BAB84E3 /* InspectorView.swift */; };
+		D4F6F8BCFA8F53556CB55AA5 /* FilmExport.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B82E9166988AEED11092787 /* FilmExport.swift */; };
 		EF4F9E708ED6C1566E1E0BA7 /* GlassGlowDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EF2B105ACDB4B20E4A3E58 /* GlassGlowDemoApp.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1461EA4933CE98555A2C1BE0 /* GlassGlowDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlassGlowDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D6E6029653F488B412F27A8 /* ShapeField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShapeField.swift; sourceTree = "<group>"; };
 		324BE48B24D2717B5B02E012 /* DemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoModel.swift; sourceTree = "<group>"; };
 		4E72257C6EBAE30C8F089EB8 /* Exporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exporter.swift; sourceTree = "<group>"; };
+		5A3F5F74CD746FB255877E19 /* Film.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Film.swift; sourceTree = "<group>"; };
 		60EF2B105ACDB4B20E4A3E58 /* GlassGlowDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassGlowDemoApp.swift; sourceTree = "<group>"; };
 		6B191E3A5448A77458527850 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		6B82E9166988AEED11092787 /* FilmExport.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilmExport.swift; sourceTree = "<group>"; };
 		71451BA8F321E350A56EBE1E /* glassglow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = glassglow; path = ..; sourceTree = SOURCE_ROOT; };
+		751DBB340B14EC59D8C01856 /* VideoWriter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoWriter.swift; sourceTree = "<group>"; };
 		AF86486203B3F8C6E66E10AC /* Scenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenes.swift; sourceTree = "<group>"; };
 		D07A3B82BC4952047BAB84E3 /* InspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -61,9 +69,13 @@
 				6B191E3A5448A77458527850 /* ContentView.swift */,
 				324BE48B24D2717B5B02E012 /* DemoModel.swift */,
 				4E72257C6EBAE30C8F089EB8 /* Exporter.swift */,
+				5A3F5F74CD746FB255877E19 /* Film.swift */,
+				6B82E9166988AEED11092787 /* FilmExport.swift */,
 				60EF2B105ACDB4B20E4A3E58 /* GlassGlowDemoApp.swift */,
 				D07A3B82BC4952047BAB84E3 /* InspectorView.swift */,
 				AF86486203B3F8C6E66E10AC /* Scenes.swift */,
+				2D6E6029653F488B412F27A8 /* ShapeField.swift */,
+				751DBB340B14EC59D8C01856 /* VideoWriter.swift */,
 			);
 			path = GlassGlowDemo;
 			sourceTree = "<group>";
@@ -143,9 +155,13 @@
 				025DDDDAF1A01A25BB561F7B /* ContentView.swift in Sources */,
 				4B2D098372F576559D0F2BBE /* DemoModel.swift in Sources */,
 				43E20AD79C69A85D1C4181F4 /* Exporter.swift in Sources */,
+				34F0715292618E2674F7B6D0 /* Film.swift in Sources */,
+				D4F6F8BCFA8F53556CB55AA5 /* FilmExport.swift in Sources */,
 				EF4F9E708ED6C1566E1E0BA7 /* GlassGlowDemoApp.swift in Sources */,
 				AA287DC010373B09116F0738 /* InspectorView.swift in Sources */,
 				8CFF27DD53E1B663DADF1B22 /* Scenes.swift in Sources */,
+				828F090E852014F2398F986E /* ShapeField.swift in Sources */,
+				0A14F12B91317ECDB0BE26F8 /* VideoWriter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
