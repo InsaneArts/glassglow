@@ -1,5 +1,10 @@
 # Changelog
 
+## Unreleased
+
+- Demo: the Film scene, a 21-second film of shapes melting into each other, and Export Video
+  (the film, or a 6-second loop of any scene). `--render-film` writes both cuts as ProRes.
+
 ## 0.1.0
 
 First release.

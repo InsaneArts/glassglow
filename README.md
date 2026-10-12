@@ -3,7 +3,7 @@
 <h3 align="center">Light moving through glass, on any SwiftUI view.</h3>
 
 <p align="center">
-  <img src=".github/assets/hero.png" width="100%" alt="Three SF Symbols rendered as glowing glass: sparkles in aurora colours, a heart in warm and cool whites, a bolt in sunset colours" />
+  <img src=".github/assets/film.jpg" width="100%" alt="A frame of the GlassGlow film: a heart, a drop, a bolt, a leaf and a moon in a row, each glass lit in its own colours" />
 </p>
 
 GlassGlow turns any SwiftUI view into glass with light sweeping through it. The shape is the view's alpha: an SF Symbol, text, a `Shape`, an image or a whole composition. The glass refracts and splits the light at its edge, and a soft halo spills around it. One modifier, rendered in Metal, on iOS, iPadOS, macOS, tvOS and visionOS.
@@ -99,16 +99,19 @@ The image is the view's size plus `GlassGlowRenderer.margin(for:)` on every side
 
 ## Demo app
 
-`Demo/GlassGlowDemo.xcodeproj` is a macOS app for trying the effect and making images for posts. Pick a scene (a symbol, your own text, shapes, a clock, a collection), set the palette and the light, freeze a moment, and export a PNG at README, square, portrait, story or landscape size. The inspector shows the Swift for what is on the stage, ready to copy.
+`Demo/GlassGlowDemo.xcodeproj` is a macOS app for trying the effect and making images and videos for posts. Pick a scene (a symbol, your own text, shapes, a clock, a collection), set the palette and the light, freeze a moment, and export a PNG or a video at README, square, portrait, story or landscape size. A video of a scene is one 6-second loop of the light. The inspector shows the Swift for what is on the stage, ready to copy.
+
+The Film scene plays a 21-second film drawn by the shader: a heart lights up and melts from shape to shape, splits into five shapes in their own colours, and they flow together into the name. The shapes morph through signed distance fields, so they never pop.
 
 <p align="center">
   <img src=".github/assets/demo.png" width="100%" alt="The GlassGlow demo on macOS: a glass heart on the stage, the scene list on the left, and palette presets and light sliders in the inspector" />
 </p>
 
-The app also renders the images in this README without opening a window:
+The app also renders the images in this README, and the film in both shapes (16:9 and 9:16, ProRes), without opening a window:
 
 ```sh
 GlassGlowDemo.app/Contents/MacOS/GlassGlowDemo --render-assets <folder>
+GlassGlowDemo.app/Contents/MacOS/GlassGlowDemo --render-film <folder>
 ```
 
 The project is generated with [XcodeGen](https://github.com/yonaskolb/XcodeGen) from `Demo/project.yml`.
