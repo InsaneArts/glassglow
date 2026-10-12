@@ -1,0 +1,360 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 77;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		025DDDDAF1A01A25BB561F7B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B191E3A5448A77458527850 /* ContentView.swift */; };
+		43E20AD79C69A85D1C4181F4 /* Exporter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4E72257C6EBAE30C8F089EB8 /* Exporter.swift */; };
+		4B2D098372F576559D0F2BBE /* DemoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 324BE48B24D2717B5B02E012 /* DemoModel.swift */; };
+		8CFF27DD53E1B663DADF1B22 /* Scenes.swift in Sources */ = {isa = PBXBuildFile; fileRef = AF86486203B3F8C6E66E10AC /* Scenes.swift */; };
+		A0B3256245CA75FA1B757E7D /* GlassGlow in Frameworks */ = {isa = PBXBuildFile; productRef = 7331421EE482FAE76D23C4AC /* GlassGlow */; };
+		AA287DC010373B09116F0738 /* InspectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D07A3B82BC4952047BAB84E3 /* InspectorView.swift */; };
+		EF4F9E708ED6C1566E1E0BA7 /* GlassGlowDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 60EF2B105ACDB4B20E4A3E58 /* GlassGlowDemoApp.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1461EA4933CE98555A2C1BE0 /* GlassGlowDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GlassGlowDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		324BE48B24D2717B5B02E012 /* DemoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DemoModel.swift; sourceTree = "<group>"; };
+		4E72257C6EBAE30C8F089EB8 /* Exporter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exporter.swift; sourceTree = "<group>"; };
+		60EF2B105ACDB4B20E4A3E58 /* GlassGlowDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlassGlowDemoApp.swift; sourceTree = "<group>"; };
+		6B191E3A5448A77458527850 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		71451BA8F321E350A56EBE1E /* glassglow */ = {isa = PBXFileReference; lastKnownFileType = folder; name = glassglow; path = ..; sourceTree = SOURCE_ROOT; };
+		AF86486203B3F8C6E66E10AC /* Scenes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scenes.swift; sourceTree = "<group>"; };
+		D07A3B82BC4952047BAB84E3 /* InspectorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InspectorView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9C08BBEFFC9194A2C871712B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				A0B3256245CA75FA1B757E7D /* GlassGlow in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		05A8A60E2C5E92885A1E2EC8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1461EA4933CE98555A2C1BE0 /* GlassGlowDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0944A981B76006EC77B32E68 /* Packages */ = {
+			isa = PBXGroup;
+			children = (
+				71451BA8F321E350A56EBE1E /* glassglow */,
+			);
+			name = Packages;
+			sourceTree = "<group>";
+		};
+		8610B03418CBC67DE523249B /* GlassGlowDemo */ = {
+			isa = PBXGroup;
+			children = (
+				6B191E3A5448A77458527850 /* ContentView.swift */,
+				324BE48B24D2717B5B02E012 /* DemoModel.swift */,
+				4E72257C6EBAE30C8F089EB8 /* Exporter.swift */,
+				60EF2B105ACDB4B20E4A3E58 /* GlassGlowDemoApp.swift */,
+				D07A3B82BC4952047BAB84E3 /* InspectorView.swift */,
+				AF86486203B3F8C6E66E10AC /* Scenes.swift */,
+			);
+			path = GlassGlowDemo;
+			sourceTree = "<group>";
+		};
+		CC295E412C6CB696E267D37D = {
+			isa = PBXGroup;
+			children = (
+				8610B03418CBC67DE523249B /* GlassGlowDemo */,
+				0944A981B76006EC77B32E68 /* Packages */,
+				05A8A60E2C5E92885A1E2EC8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		07363461BB93E6DD13D3AA11 /* GlassGlowDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B316E864BA07A7CACF716161 /* Build configuration list for PBXNativeTarget "GlassGlowDemo" */;
+			buildPhases = (
+				6559E378963B6AF742EA843C /* Sources */,
+				9C08BBEFFC9194A2C871712B /* Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = GlassGlowDemo;
+			packageProductDependencies = (
+				7331421EE482FAE76D23C4AC /* GlassGlow */,
+			);
+			productName = GlassGlowDemo;
+			productReference = 1461EA4933CE98555A2C1BE0 /* GlassGlowDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		490B6177C03FFD8EF7EA8304 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = YES;
+				LastUpgradeCheck = 1430;
+				TargetAttributes = {
+					07363461BB93E6DD13D3AA11 = {
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = F7451EB6D81010FB7034AA8A /* Build configuration list for PBXProject "GlassGlowDemo" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				Base,
+				en,
+			);
+			mainGroup = CC295E412C6CB696E267D37D;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				2CDF1A8417A6739D83FE4C4D /* XCLocalSwiftPackageReference ".." */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = 05A8A60E2C5E92885A1E2EC8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				07363461BB93E6DD13D3AA11 /* GlassGlowDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		6559E378963B6AF742EA843C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				025DDDDAF1A01A25BB561F7B /* ContentView.swift in Sources */,
+				4B2D098372F576559D0F2BBE /* DemoModel.swift in Sources */,
+				43E20AD79C69A85D1C4181F4 /* Exporter.swift in Sources */,
+				EF4F9E708ED6C1566E1E0BA7 /* GlassGlowDemoApp.swift in Sources */,
+				AA287DC010373B09116F0738 /* InspectorView.swift in Sources */,
+				8CFF27DD53E1B663DADF1B22 /* Scenes.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		0A06B8B319E5929666100095 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.insanearts.glassglow.demo;
+				PRODUCT_NAME = GlassGlowDemo;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		207C98E71174D46F5F61E34E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = GlassGlow;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "GlassGlow demo";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		A790A31CBCEF7C8CAF824A9C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = dev.insanearts.glassglow.demo;
+				PRODUCT_NAME = GlassGlowDemo;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		C7F4DE5D844206D67F0C973C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				CODE_SIGN_STYLE = Automatic;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"$(inherited)",
+					"DEBUG=1",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = GlassGlow;
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.developer-tools";
+				INFOPLIST_KEY_NSHumanReadableCopyright = "GlassGlow demo";
+				MACOSX_DEPLOYMENT_TARGET = 14.0;
+				MARKETING_VERSION = 1.0;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B316E864BA07A7CACF716161 /* Build configuration list for PBXNativeTarget "GlassGlowDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0A06B8B319E5929666100095 /* Debug */,
+				A790A31CBCEF7C8CAF824A9C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		F7451EB6D81010FB7034AA8A /* Build configuration list for PBXProject "GlassGlowDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				C7F4DE5D844206D67F0C973C /* Debug */,
+				207C98E71174D46F5F61E34E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		2CDF1A8417A6739D83FE4C4D /* XCLocalSwiftPackageReference ".." */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ..;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7331421EE482FAE76D23C4AC /* GlassGlow */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = GlassGlow;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = 490B6177C03FFD8EF7EA8304 /* Project object */;
+}
