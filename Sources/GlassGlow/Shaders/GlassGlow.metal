@@ -174,8 +174,9 @@ kernel void gg_shade(uint2 gid [[thread_position_in_grid]],
     GGFrame f = gg_frame(box, P);
     float sdfPx = sdfTex.read(gid).r;
     float sdf = sdfPx / f.height;
-    // Outward normal from the distance field's gradient (central differences ~0.45% of the box).
-    int h = max(1, int(round(f.height * 0.0045f)));
+    // Outward normal from the distance field's gradient (central differences ~0.45% of the box,
+    // at least 3 px: closer samples pick up the flood's pixel steps as stripes along the edge).
+    int h = max(3, int(round(f.height * 0.0045f)));
     int2 g = int2(gid);
     int2 hi = int2(size) - 1;
     float dx = sdfTex.read(uint2(clamp(g + int2(h, 0), int2(0), hi))).r - sdfTex.read(uint2(clamp(g - int2(h, 0), int2(0), hi))).r;
