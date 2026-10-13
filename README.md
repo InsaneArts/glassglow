@@ -3,8 +3,10 @@
 <h3 align="center">Light moving through glass, on any SwiftUI view.</h3>
 
 <p align="center">
-  <img src=".github/assets/film.jpg" width="100%" alt="A frame of the GlassGlow film: a heart, a drop, a bolt, a leaf and a moon in a row, each glass lit in its own colours" />
+  <a href="https://insanearts.github.io/glassglow/"><img src="docs/media/hero.webp" width="100%" alt="The GlassGlow film: a glass heart lights up, melts from shape to shape, splits into five shapes in their own colours, and they flow together into the word GlassGlow" /></a>
 </p>
+
+<p align="center"><a href="https://insanearts.github.io/glassglow/">insanearts.github.io/glassglow</a></p>
 
 GlassGlow turns any SwiftUI view into glass with light sweeping through it. The shape is the view's alpha: an SF Symbol, text, a `Shape`, an image or a whole composition. The glass refracts and splits the light at its edge, and a soft halo spills around it. One modifier, rendered in Metal, on iOS, iPadOS, macOS, tvOS and visionOS.
 
