@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>GlassGlow · Light moving through glass, on any SwiftUI view</title>
+<meta name="description" content="The WWDC 2026 “All systems glow” look on any SwiftUI view: light moving through glass. One modifier, rendered in Metal.">
+<meta name="theme-color" content="#000000">
+<meta property="og:type" content="website">
+<meta property="og:title" content="GlassGlow">
+<meta property="og:description" content="Light moving through glass, on any SwiftUI view. One modifier, rendered in Metal.">
+<meta property="og:url" content="https://insanearts.github.io/glassglow/">
+<meta property="og:image" content="https://insanearts.github.io/glassglow/media/poster.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3CradialGradient id='g' cx='.4' cy='.35' r='.7'%3E%3Cstop offset='0' stop-color='%23fff'/%3E%3Cstop offset='.45' stop-color='%23c9b8ff'/%3E%3Cstop offset='1' stop-color='%2310102a'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='32' cy='32' r='28' fill='url(%23g)'/%3E%3C/svg%3E">
+<style>
+  :root {
+    --bg: #000;
+    --text: #f5f5f7;
+    --dim: #a1a1a6;
+    --faint: #6e6e73;
+    --line: rgba(255, 255, 255, 0.08);
+    --card: rgba(255, 255, 255, 0.035);
+    --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", sans-serif;
+    --mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+  a { color: inherit; text-decoration: none; }
+
+  /* Soft coloured light behind the hero, drifting slowly. */
+  .aura {
+    position: absolute;
+    inset: -20vh -20vw auto;
+    height: 120vh;
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(80px);
+    opacity: 0.55;
+    background:
+      radial-gradient(28vw 22vw at 30% 40%, rgba(255, 170, 120, 0.35), transparent 70%),
+      radial-gradient(30vw 24vw at 70% 35%, rgba(150, 120, 255, 0.35), transparent 70%),
+      radial-gradient(26vw 20vw at 52% 62%, rgba(90, 210, 255, 0.25), transparent 70%);
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes drift {
+    to { transform: translate3d(2vw, 3vh, 0) rotate(6deg) scale(1.06); }
+  }
+
+  .wrap { width: min(1120px, 100% - 48px); margin: 0 auto; }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    backdrop-filter: saturate(180%) blur(20px);
+    -webkit-backdrop-filter: saturate(180%) blur(20px);
+    background: rgba(0, 0, 0, 0.6);
+    border-bottom: 1px solid var(--line);
+  }
+  header .wrap { display: flex; align-items: center; justify-content: space-between; height: 52px; }
+  .brand { font-weight: 600; letter-spacing: -0.01em; }
+  nav { display: flex; gap: 28px; font-size: 14px; color: var(--dim); }
+  nav a:hover { color: var(--text); }
+  @media (max-width: 640px) { nav a:not(.gh) { display: none; } }
+
+  .hero { text-align: center; padding: 96px 0 40px; }
+  .eyebrow { margin: 0 0 14px; font-size: 14px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--dim); }
+  h1 {
+    margin: 0;
+    font-size: clamp(56px, 11vw, 132px);
+    line-height: 1;
+    font-weight: 800;
+    letter-spacing: -0.045em;
+    background: linear-gradient(100deg, #fff 0%, #ffd8c2 18%, #fff 34%, #cdbdff 52%, #fff 68%, #a8ecff 84%, #fff 100%);
+    background-size: 300% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    filter: drop-shadow(0 0 28px rgba(200, 180, 255, 0.35));
+    animation: sheen 9s linear infinite;
+  }
+  @keyframes sheen { to { background-position: -300% 0; } }
+  .lede { margin: 22px auto 0; max-width: 620px; font-size: clamp(20px, 2.6vw, 26px); line-height: 1.35; color: var(--dim); }
+  .lede b { color: var(--text); font-weight: 600; }
+
+  .actions { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 34px; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 44px;
+    padding: 0 22px;
+    border-radius: 999px;
+    font: 500 15px var(--sans);
+    cursor: pointer;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--text);
+    transition: background 0.2s, transform 0.2s;
+  }
+  .btn:hover { background: rgba(255, 255, 255, 0.08); }
+  .btn:active { transform: scale(0.98); }
+  .btn.primary { background: #f5f5f7; color: #000; border-color: transparent; }
+  .btn.primary:hover { background: #fff; }
+  .btn code { font: 13px var(--mono); color: var(--dim); }
+  @media (max-width: 420px) { .btn code { display: none; } }
+
+  .stage {
+    position: relative;
+    margin: 64px 0 0;
+    border-radius: 22px;
+    overflow: hidden;
+    border: 1px solid var(--line);
+    background: #000;
+    box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.02), 0 40px 120px -20px rgba(140, 120, 255, 0.25);
+  }
+  .stage video { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; }
+
+  section { padding: 120px 0 0; }
+  h2 { margin: 0; font-size: clamp(34px, 5vw, 56px); line-height: 1.05; letter-spacing: -0.035em; font-weight: 700; }
+  .sub { margin: 16px 0 0; max-width: 620px; color: var(--dim); font-size: 19px; }
+
+  .split { display: grid; grid-template-columns: 1fr 1.15fr; gap: 56px; align-items: center; }
+  .split > * { min-width: 0; }
+  @media (max-width: 860px) { .split { grid-template-columns: 1fr; gap: 32px; } }
+
+  pre {
+    margin: 0;
+    padding: 26px 28px;
+    border-radius: 18px;
+    border: 1px solid var(--line);
+    background: rgba(255, 255, 255, 0.03);
+    font: 15px/1.65 var(--mono);
+    overflow-x: auto;
+    color: #e6e6eb;
+  }
+  .k { color: #ff7ab2; }
+  .t { color: #d0a8ff; }
+  .s { color: #ff9f7a; }
+  .n { color: #d9c97c; }
+  .f { color: #7fd7ff; }
+  .m { color: #fff; font-weight: 600; text-shadow: 0 0 14px rgba(200, 180, 255, 0.9); }
+  .c { color: var(--faint); }
+
+  .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; margin-top: 48px; }
+  @media (max-width: 760px) { .grid { grid-template-columns: 1fr; } }
+  .card { border-radius: 20px; border: 1px solid var(--line); background: var(--card); overflow: hidden; }
+  .card video { display: block; width: 100%; aspect-ratio: 16 / 9; background: #000; }
+  .card div { padding: 18px 22px 22px; }
+  .card h3 { margin: 0; font-size: 19px; letter-spacing: -0.01em; }
+  .card p { margin: 6px 0 0; color: var(--dim); font-size: 15px; }
+  .card code { font: 13.5px var(--mono); color: var(--text); }
+
+  .facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin-top: 48px; }
+  @media (max-width: 760px) { .facts { grid-template-columns: 1fr; } }
+  .fact { padding: 26px; border-radius: 20px; border: 1px solid var(--line); background: var(--card); }
+  .fact b { display: block; font-size: 30px; letter-spacing: -0.03em; }
+  .fact span { display: block; margin-top: 6px; color: var(--dim); font-size: 15px; }
+
+  .install { text-align: center; }
+  .install .sub { margin-left: auto; margin-right: auto; }
+  .install pre { display: inline-block; margin-top: 36px; text-align: left; max-width: 100%; }
+
+  footer { margin-top: 140px; padding: 36px 0 48px; border-top: 1px solid var(--line); color: var(--faint); font-size: 13px; }
+  footer .wrap { display: flex; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+  footer a { color: var(--dim); }
+  footer a:hover { color: var(--text); }
+
+  @media (prefers-reduced-motion: reduce) {
+    .aura, h1 { animation: none; }
+  }
+</style>
+</head>
+<body>
+<div class="aura" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap">
+    <a class="brand" href="./">GlassGlow</a>
+    <nav>
+      <a href="#code">Code</a>
+      <a href="#demo">Demo</a>
+      <a href="#install">Install</a>
+      <a class="gh" href="https://github.com/InsaneArts/glassglow">GitHub</a>
+    </nav>
+  </div>
+</header>
+
+<main class="wrap">
+  <section class="hero">
+    <p class="eyebrow">Swift package · Metal</p>
+    <h1>GlassGlow</h1>
+    <p class="lede">Light moving through glass, on <b>any SwiftUI view</b>.</p>
+    <div class="actions">
+      <a class="btn primary" href="https://github.com/InsaneArts/glassglow">View on GitHub</a>
+      <button class="btn" data-copy="https://github.com/InsaneArts/glassglow"><code>github.com/InsaneArts/glassglow</code> <span>Copy URL</span></button>
+    </div>
+    <figure class="stage">
+      <video src="media/film.mp4" poster="media/poster.jpg" autoplay muted loop playsinline aria-label="A glass heart lights up, melts into other shapes, splits into five shapes in their own colours, and they flow together into the word GlassGlow"></video>
+    </figure>
+  </section>
+
+  <section id="code" class="split">
+    <div>
+      <h2>One modifier.</h2>
+      <p class="sub">The shape is the view's alpha: an SF Symbol, text, a <code>Shape</code>, an image or a whole composition. The view keeps its layout, and the halo takes no touches.</p>
+    </div>
+<pre><code><span class="k">import</span> GlassGlow
+
+<span class="t">Image</span>(systemName: <span class="s">"heart.fill"</span>)
+    .<span class="f">resizable</span>()
+    .<span class="f">scaledToFit</span>()
+    .<span class="f">frame</span>(width: <span class="n">240</span>, height: <span class="n">240</span>)
+    .<span class="m">glassGlow</span>()
+
+<span class="t">Text</span>(<span class="s">"Glow"</span>)
+    .<span class="f">font</span>(.<span class="f">system</span>(size: <span class="n">120</span>, weight: .<span class="f">black</span>))
+    .<span class="m">glassGlow</span>(.<span class="f">sunset</span>)</code></pre>
+  </section>
+
+  <section id="demo">
+    <h2>Recorded live.</h2>
+    <p class="sub">Each clip is the macOS demo app in the repo, captured from its window as it runs.</p>
+    <div class="grid">
+      <div class="card">
+        <video src="media/symbols.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <div><h3>Any symbol</h3><p>The glass follows the outline of any SF Symbol.</p></div>
+      </div>
+      <div class="card">
+        <video src="media/colors.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <div><h3>Any colours</h3><p>Seven presets, or a palette of your own: <code>.glassGlow(.ocean)</code>.</p></div>
+      </div>
+      <div class="card">
+        <video src="media/text.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <div><h3>Any text</h3><p>Type, and the light fills every letter.</p></div>
+      </div>
+      <div class="card">
+        <video src="media/shapes.mp4" autoplay muted loop playsinline preload="metadata"></video>
+        <div><h3>Any shape</h3><p><code>Circle</code>, <code>RoundedRectangle</code> or your own <code>Shape</code>.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Real glass, in Metal.</h2>
+    <p class="sub">A distance field gives the glass its depth. Ten lights move through it, the edge bends and splits them, and a soft halo spills around the shape.</p>
+    <div class="facts">
+      <div class="fact"><b>10 lights</b><span>Ten moving lights, tinted by your palette.</span></div>
+      <div class="fact"><b>6 s loop</b><span>Set the speed, glow, refraction and colour split, or freeze a moment.</span></div>
+      <div class="fact"><b>5 platforms</b><span>iOS, iPadOS, macOS, tvOS and visionOS.</span></div>
+    </div>
+  </section>
+
+  <section id="install" class="install">
+    <h2>Install.</h2>
+    <p class="sub">Add the package with Swift Package Manager. Requires iOS 17, macOS 14, tvOS 17 or visionOS 1. Without Metal, the view shows unchanged.</p>
+<pre><code>.<span class="f">package</span>(url: <span class="s">"https://github.com/InsaneArts/glassglow"</span>, from: <span class="s">"0.1.0"</span>)</code></pre>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>GlassGlow is not affiliated with Apple.</span>
+    <span>MIT · <a href="https://github.com/InsaneArts">by InsaneArts</a></span>
+  </div>
+</footer>
+
+<script>
+  for (const button of document.querySelectorAll("[data-copy]")) {
+    button.addEventListener("click", async () => {
+      await navigator.clipboard.writeText(button.dataset.copy);
+      const label = button.querySelector("span");
+      label.textContent = "Copied";
+      setTimeout(() => (label.textContent = "Copy URL"), 1600);
+    });
+  }
+</script>
+</body>
+</html>
